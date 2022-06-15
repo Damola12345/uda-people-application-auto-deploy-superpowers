@@ -39,7 +39,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-     D     keys: [frontend-build]
+          keys: [frontend-build]
       - run:
           name: Build front-end
           command: |
