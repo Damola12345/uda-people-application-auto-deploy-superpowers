@@ -176,7 +176,8 @@ jobs:
   deploy-infrastructure:
     docker:
       - image: amazon/aws-cli # Docker image here that supports AWS CLI
-    steps:
+    context: AWS_DEFAULT_REGION
+    steps: 
       # Checkout code from git
       - checkout
       - env-setup
