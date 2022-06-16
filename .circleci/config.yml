@@ -9,7 +9,7 @@ commands:
           profile-name: Admin
           aws-access-key-id: AWS_ACCESS_KEY_ID 
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-commands:
+
 # orbs:
 #   slack: circleci/slack@4.9.3
 
@@ -178,6 +178,7 @@ jobs:
     steps:
       # Checkout code from git
       - checkout
+      - env-setup
       - run:
           name: Ensure back-end infrastructure exists
           command: |
