@@ -180,6 +180,8 @@ jobs:
       # Checkout code from git
       - checkout
       - env-setup
+
+      - run:  aws s3 ls
       - run:
           name: Ensure back-end infrastructure exists
           command: |
