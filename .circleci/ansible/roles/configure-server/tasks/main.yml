@@ -1,16 +1,30 @@
 ---
-- name: "Add Node.js from Nodesource"
-  become: true
-  shell: n 13.14.0
-
-- name: "Install Node.js 13"
-  become: true
+- name: Update apt packages.
+  become: yes
   apt:
-    name: ["nodejs"]
+    update_cache: yes
+- name: Upgrade packages
+  become: yes
+  apt:
+    upgrade: "yes"
+- name: Remove dependencies that are no longer required.
+  become: yes
+  apt:
+    autoremove: "yes"
+- name: Remove dependencies that are no longer required.
+  become: yes
+  apt:
+    autoremove: "yes"
+- name: Install dependencies
+  become: yes
+  apt:
+    name: ["nodejs", "npm", "python3", "tar", "gzip", "git"]
     state: latest
     update_cache: yes
-
-- name: "Install PM2 Globally"
+- name: install pm2
+  become: yes
   npm:
     name: pm2
     global: yes
+    production: yes
+    state: present
