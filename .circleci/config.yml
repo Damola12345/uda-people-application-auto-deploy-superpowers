@@ -1,5 +1,6 @@
 version: 2.1
-
+orbs: 
+  aws-cli: circleci/aws-cli@3.1.1
 commands:
 # orbs:
 #   slack: circleci/slack@4.9.3
@@ -13,15 +14,6 @@ commands:
 #           template: basic_fail_1
 
 
-  install_awscli:
-    description: Install AWS CLI v2
-    steps:
-      - run:
-          name: Install AWS CLI v2
-          command: |
-            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-            unzip awscliv2.zip
-            sudo ./aws/install
   install_ansible:
     description: Install Ansible
     steps:
@@ -178,7 +170,6 @@ jobs:
     steps:
       # Checkout code from git
       - checkout
-      - install_awscli
       - run:
           name: Ensure back-end infrastructure exists
           command: |
