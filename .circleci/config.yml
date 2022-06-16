@@ -227,11 +227,17 @@ jobs:
     steps:
       - checkout
       - env-setup
-      - install_ansible
       - add_ssh_keys:
           fingerprints: ["1f:29:48:f8:df:2c:a6:02:15:80:2c:43:14:9c:6a:2e"]
       - attach_workspace:
           at: ~/
+      - run:
+          name: Install dependencies
+          command: |
+            apk add curl
+            apk add --upgrade bash
+            apk add --update ansible
+            apk add openssh-client
       - run:
           name: Configure Server
           command: |
