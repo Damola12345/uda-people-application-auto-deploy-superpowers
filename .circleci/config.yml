@@ -178,7 +178,11 @@ jobs:
     steps:
       # Checkout code from git
       - checkout
-      - install_awscli
+      - run:
+          name: Install tar utility
+          command: |
+            yum install -y tar gzip
+            yum -y install which
       - run:
           name: Ensure back-end infrastructure exists
           command: |
