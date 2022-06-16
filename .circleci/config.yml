@@ -65,7 +65,7 @@ commands:
       # Add parameter here     
     steps:
       - run:
-          name: Revert migrationswhen: on_fail
+          name: Revert migrations
           when: on_fail
           command: |
             SUCCESS=$(Curl --insecure https://kvdb.io/${KVDB_BUCKET}/migration_<< parameters.Workflow_ID >>)
