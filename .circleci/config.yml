@@ -2,6 +2,14 @@ version: 2.1
 orbs: 
   aws-cli: circleci/aws-cli@3.1.1
 commands:
+  env-setup:
+    description: AWS Env Setup
+    steps:
+      - aws-cli/setup:
+          profile-name: Admin
+          aws-access-key-id: AWS_ACCESS_KEY_ID 
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+commands:
 # orbs:
 #   slack: circleci/slack@4.9.3
 
