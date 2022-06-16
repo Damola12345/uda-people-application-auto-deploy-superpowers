@@ -176,12 +176,11 @@ jobs:
   deploy-infrastructure:
     docker:
       - image: amazon/aws-cli # Docker image here that supports AWS CLI
-    context: AWS_DEFAULT_REGION
     steps: 
       # Checkout code from git
       - checkout
       - env-setup
-
+      
       - run:  aws s3 ls
       - run:
           name: Ensure back-end infrastructure exists
@@ -378,6 +377,7 @@ workflows:
       #       - scan-frontend
       - deploy-infrastructure:
           requires: [test-frontend, test-backend, scan-frontend, scan-backend]
+          context: AWS_DEFAULT_REGION
           filters:
             branches:
               only: [master]
