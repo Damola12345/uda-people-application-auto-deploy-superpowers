@@ -306,12 +306,12 @@ jobs:
                     
   deploy-backend:
     docker:
-      - image: python:3.7-alpine3.11
+      - image: cimg/base:stable
     steps:
       - checkout
       - env-setup
-      - install_ansible
       - install_nodejs
+      - install_ansible
       - add_ssh_keys:
           fingerprints: ["72:d5:0f:ee:d5:e9:6a:90:16:28:22:25:d4:cc:87:df"]
       - attach_workspace:
