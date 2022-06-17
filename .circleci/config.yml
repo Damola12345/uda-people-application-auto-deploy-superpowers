@@ -310,22 +310,20 @@ jobs:
     steps:
       - checkout
       - env-setup
+      - install_ansible
+      - install_nodejs
       - add_ssh_keys:
           fingerprints: ["72:d5:0f:ee:d5:e9:6a:90:16:28:22:25:d4:cc:87:df"]
       - attach_workspace:
           at: ~/
+      - restore_cache:
+          keys: [backend-build]
+      # Checkout code from git
+      # Add ssh keys with fingerprint
+      # attach workspace
       - run:
           name: Install dependencies
           command: |
-            apk add --update ansible rsync
-            ansible-galaxy install weareinteractive.environment
-            apk add tar gzip
-            apk add zip unzip 
-            apk add curl
-            apk add gzip
-            apk add nodejs
-            apk add npm
-            pip install awscli
             cd backend
             npm i
       - run:
