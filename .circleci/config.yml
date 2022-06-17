@@ -276,6 +276,8 @@ jobs:
       - env-setup
       - install_nodejs
       # Checkout code from git
+      - restore_cache:
+          keys: [frontend-build] 
       - run:
           name: Install dependencies
           command: |
