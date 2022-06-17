@@ -255,7 +255,7 @@ jobs:
             cd backend
             npm cache clean --force
             rm -rf node_modules package-lock.json
-            npm i -g
+            npm i 
             npm run build
             npm run migrations > migrations_log.txt
       - run:
