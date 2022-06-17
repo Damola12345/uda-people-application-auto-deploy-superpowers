@@ -10,7 +10,6 @@ commands:
           aws-access-key-id: AWS_ACCESS_KEY_ID 
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
           aws-region: AWS_DEFAULT_REGION
-          KVDB-BUCKET: KVDB_BUCKET
 
 # orbs:
 #   slack: circleci/slack@4.9.3
