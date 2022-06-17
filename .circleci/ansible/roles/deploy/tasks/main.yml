@@ -1,8 +1,8 @@
 ---  
-# - name: "Creates backend app directory"
-#   file:
-#     path: ~/backend-app
-#     state: directory
+- name: "Creates backend app directory"
+  file:
+    path: ~/backend-app
+    state: directory
 
 - name: "unarchive backend files"
   unarchive:

@@ -343,7 +343,7 @@ jobs:
 
             cd .circleci/ansible
             cat inventory.txt
-            SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o StrictHostKeyChecking=no -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o 'User="ubuntu"' -o ConnectTimeout=10 -o 'ControlPath="/home/circleci/.ansible/cp/141fb2ce35"' -tt 44.202.62.153 'sudo -H -S -n  -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-zrfgcjkkauxngzzbwwbdiiyxqdfpvytv ; test -e /usr/bin/python3 || (apt -y update && apt install -y python3)
+            export ANSIBLE_CONFIG=./.circleci/ansible/ansible.cfg
             ansible-playbook -i inventory.txt deploy-backend.yml 
 
       - destroy-environment
