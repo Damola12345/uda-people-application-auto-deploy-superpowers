@@ -343,8 +343,8 @@ jobs:
 
             cd .circleci/ansible
             cat inventory.txt
-            export ANSIBLE_HOST_KEY_CHECKING=False
-            ansible-playbook -i inventory.txt deploy-backend.yml -vvvv
+            
+            ansible-playbook -i inventory.txt deploy-backend.yml --list 
 
       - destroy-environment
       - revert-migrations
