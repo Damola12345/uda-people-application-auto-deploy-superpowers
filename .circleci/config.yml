@@ -245,6 +245,7 @@ jobs:
   run-migrations:
     docker:
       - image: sleavely/node-awscli:14.x
+        environment: KVDB_BUCKET
     steps:
       - checkout
       - env-setup
@@ -385,7 +386,7 @@ jobs:
             fi
 
       - destroy-environment
-      - revert-migration
+      - revert-migrations
 #       # Here's where you will add some code to rollback on failure  
 
 #   cloudfront-update:
