@@ -387,20 +387,31 @@ jobs:
       - revert-migrations
 #       # Here's where you will add some code to rollback on failure  
 
-#   cloudfront-update:
-#     docker:
-#       # Docker image here that supports AWS CLI
-#     steps:
-#       # Checkout code from git
-#       - run:
-#           name: Install dependencies
-#           command: |
-#             # your code here
-#       - run:
-#           name: Update cloudfront distribution
-#           command: |
-#             # your code here
-#       # Here's where you will add some code to rollback on failure  
+  cloudfront-update:
+    docker:
+      - image: amazon/aws-cli
+    steps:
+      - checkout
+      - env-setup
+      - run:
+          name: get old workflow for clean
+          command: |
+            OldWorkflowId=$(aws cloudformation \
+            list-exports --query "Exports[?Name==\`WorkflowID\`].Value" \
+            --no-paginate --output text)
+            echo OldWorkflowId: ${OldWorkflowId}
+            curl https://kvdb.io/${KVDB_BUCKET}/old_workflow_id -d "${OLD_WORKFLOW_ID}"
+      - run:
+          name: Update cloudfront distribution
+          command: |
+            aws cloudformation deploy \
+              --template-file .circleci/files/cloudfront.yml \
+              --tags project=circleci-${CIRCLE_WORKFLOW_ID:0:7} \
+              --stack-name "udapeople-cloudfrontstack" \
+              --parameter-overrides WorkflowID="${CIRCLE_WORKFLOW_ID:0:7}"
+      # Here's where you will add some code to rollback on failure  
+      - destroy-environment
+      - revert-migrations
 
 # cleanup:
 #     docker:
@@ -471,7 +482,8 @@ workflows:
       - smoke-test:
           requires: [deploy-backend, deploy-frontend]
           context: AWS_DEFAULT_REGION
-      # - cloudfront-update:
-      #     requires: [smoke-test]
+      - cloudfront-update:
+          requires: [smoke-test]
+          context: AWS_DEFAULT_REGION
       # - cleanup:
       #     requires: [cloudfront-update]
