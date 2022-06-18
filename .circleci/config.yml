@@ -245,7 +245,8 @@ jobs:
   run-migrations:
     docker:
       - image: sleavely/node-awscli:14.x
-        environment: KVDB_BUCKET
+        environment: 
+        KVDB_BUCKET: $KVDB_BUCKET
     steps:
       - checkout
       - env-setup
