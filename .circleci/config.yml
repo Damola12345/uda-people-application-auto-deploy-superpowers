@@ -343,7 +343,6 @@ jobs:
 
             cd .circleci/ansible
             cat inventory.txt
-            export ANSIBLE_CONFIG=./.circleci/ansible/ansible.cfg
             ansible-playbook -i inventory.txt deploy-backend.yml 
 
       - destroy-environment
