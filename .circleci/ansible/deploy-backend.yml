@@ -11,6 +11,8 @@
     - name: Loading environment variables
       tags: always
       set_fact:
+        NODE_ENV: "production"
+        VERSION: "1"
         ENVIRONMENT: production
         TYPEORM_CONNECTION: "{{ lookup('env','TYPEORM_CONNECTION') }}"
         TYPEORM_HOST: "{{ lookup('env','TYPEORM_HOST') }}"
