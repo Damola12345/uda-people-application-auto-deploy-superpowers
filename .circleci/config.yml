@@ -358,7 +358,6 @@ jobs:
     steps:
       - checkout
       - env-setup
-      - install_nodejs
       - run:
           name: Get backend url
           command: |
