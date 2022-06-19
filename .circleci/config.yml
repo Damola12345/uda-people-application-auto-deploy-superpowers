@@ -470,7 +470,6 @@ jobs:
   #         channel: pipeline-ci-cd
   #         template: success_deployment_1
 
-
 workflows:
   default:
     jobs:
