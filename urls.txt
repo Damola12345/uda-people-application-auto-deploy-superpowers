@@ -1,5 +1,5 @@
-Github repo link : 
-S3 bucket public link : 
-CloudFront link :
-Link to deployed application ec2 instance : 
-Link to prometheus server: 
+Github repo link [URL01] : https://github.com/Damola12345/uda-people-application-auto-deploy-superpowers
+S3 bucket public link [URL02] : https://udapeople-943870b.s3.amazonaws.com/index.html
+CloudFront link [URL03] : https://d2skyqidlp3c21.cloudfront.net/
+Link to deployed application ec2 instance [URL04]: http://18.207.186.252:3030/api/status
+Link to prometheus server [URL05]: http://54.161.136.102:9090/
