@@ -14,6 +14,12 @@ In this project, you will prove your mastery of the following learning objective
 
 ![Diagram of CI/CD Pipeline we will be building.](udapeople.png)
 
+<h3 align="center">UdaPeople Pipeline</h3>   
+
+<p align="center">
+  <img width="" height="" src="./udapeople-pipeline.png"  
+</p>
+
 ### Instructions
 
 * [Selling CI/CD](instructions/0-selling-cicd.md)
@@ -22,7 +28,12 @@ In this project, you will prove your mastery of the following learning objective
 * [Configuration Management](instructions/3-configuration-management.md)
 * [Turn Errors into Sirens](instructions/4-turn-errors-into-sirens.md)
 
-### Project Submission
+#
+<h2 align="center">Project Submission</h2>  
+
+<p align="center">
+  <img width="" height="" src="./pipeline.jpg"  
+</p>
 
 For your submission, please submit the following:
 
